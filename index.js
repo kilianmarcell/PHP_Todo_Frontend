@@ -8,5 +8,7 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }).then(function(eredmeny) {
             console.log(eredmeny);
+        }).catch(function(error) {
+            window.alert("Hiba! " + error.message);
         });
 });
