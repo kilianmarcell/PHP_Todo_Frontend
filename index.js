@@ -17,4 +17,24 @@ window.addEventListener('DOMContentLoaded', function() {
         }).catch(function(error) {
             window.alert("Hiba! " + error.message);
         });
+
+        document.getElementById("todoButton").addEventListener("click", function() {
+            let todoText = document.getElementById("todoText").value;
+            let todoItem = {
+                text: todoText,
+                done: false,
+            };
+            fetch('http://localhost:8080/todos', {
+                method: 'POST',
+                body: JSON.stringify(todoItem),
+            }).then(function(response) {
+                if (response.ok) {
+                    window.alert("Siker!");
+                } else {
+                    throw new Error(response.status);
+                }
+            }).catch(function(error) {
+                window.alert("Hiba! " + error.message);
+            })
+        });
 });
