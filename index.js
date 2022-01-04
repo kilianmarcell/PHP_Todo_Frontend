@@ -1,4 +1,12 @@
 window.addEventListener('DOMContentLoaded', function() {
-    let promise = fetch('http://localhost:8080/todos');
-    console.log(promise);
+    fetch('http://localhost:8080/todos')
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error("HTTP hiba: " + response.statusText);
+            } else {
+                return response.json();
+            }
+        }).then(function(eredmeny) {
+            console.log(eredmeny);
+        });
 });
